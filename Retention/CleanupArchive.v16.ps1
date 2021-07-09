@@ -57,7 +57,7 @@
 # ----- End Define Variables ----
 
     Function Get-LocalTime($UTCTime) {
-        $strCurrentTimeZone = (Get-WmiObject win32_timezone).StandardName
+        $strCurrentTimeZone = [TimeZoneInfo]::Local.Id
         $TZ = [System.TimeZoneInfo]::FindSystemTimeZoneById($strCurrentTimeZone)
         $LocalTime = [System.TimeZoneInfo]::ConvertTimeFromUtc($UTCTime, $TZ)
         Return $LocalTime
